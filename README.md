@@ -1,0 +1,2 @@
+# randLang
+Random language generator
