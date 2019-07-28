@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block warning %}
+  <div class="alert alert-danger alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Danger!</strong> {{warning}}
+  </div>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top d-flex justify-content-center">
+<ul class="navbar-nav">
+    <ul class="list-group list-group-horizontal">
+      <li class="nav-item list-group-item">
+        <form action="generate_pdf" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="language" value="{{language}}">
+          <button type="submit" class="btn btn-lg">Download PDF</button>
+        </form>
+      </li>
+      <li class="nav-item list-group-item">
+        <form action="show_letters" method="POST">
+            {% csrf_token %}
+            <a href="show_letters" class="btn btn-lg" role="button">Generate New Language</a>
+        </form>
+      </li>
+    </ul>
+</ul>
+</nav>
+<br />
+<br />
+<ul class="list-group list-group-horizontal m-5">
+  <li class="list-group-item col-4"><h3>Word in {{language}} </h3></li>
+  <li class="list-group-item col-4">Translates to</li>
+  <li class="list-group-item col-4"><h3>English Translation<h3></li>
+</ul>
+{% for word, dict_words in words %}
+<ul class="list-group list-group-horizontal m-5">
+  <li class="list-group-item col-4">{{word}}</li>
+  <li class="list-group-item col-4">can be translated to</li>
+  <li class="list-group-item col-4">{{dict_words}}</li>
+</ul>
+{% endfor %}
+{% endblock %}
