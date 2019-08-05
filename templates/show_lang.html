@@ -5,26 +5,22 @@
       <strong>Danger!</strong> {{warning}}
   </div>
 {% endblock %}
+{% block navbar %}
+<li class="nav-item list-group-item">
+<form action="generate_pdf" method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="language" value="{{language}}">
+  <button type="submit" class="btn btn-lg">Download PDF</button>
+</form>
+</li>
+<li class="nav-item list-group-item">
+<form action="show_letters" method="POST">
+    {% csrf_token %}
+    <a href="show_letters" class="btn btn-lg" role="button">Generate New Language</a>
+</form>
+</li>
+{% endblock %}
 {% block body %}
-<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top d-flex justify-content-center">
-<ul class="navbar-nav">
-    <ul class="list-group list-group-horizontal">
-      <li class="nav-item list-group-item">
-        <form action="generate_pdf" method="POST">
-          {% csrf_token %}
-          <input type="hidden" name="language" value="{{language}}">
-          <button type="submit" class="btn btn-lg">Download PDF</button>
-        </form>
-      </li>
-      <li class="nav-item list-group-item">
-        <form action="show_letters" method="POST">
-            {% csrf_token %}
-            <a href="show_letters" class="btn btn-lg" role="button">Generate New Language</a>
-        </form>
-      </li>
-    </ul>
-</ul>
-</nav>
 <br />
 <br />
 <ul class="list-group list-group-horizontal m-5">

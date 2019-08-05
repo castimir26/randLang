@@ -50,8 +50,10 @@ router.register(r'dict_words',EnglishWords)
 
 urlpatterns = [
     path('adminlang/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    url(r'^api', include(router.urls)),
+    path('',include('randLang.urls')),
     path('randLang/',include('randLang.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
     re_path('api/', include('randLang.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -11,10 +11,15 @@ from randLang.services import assemble_word
 from randLang.services import con_select_all
 import time
 import random
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+def login(request):
+    context_dict = {}
+    return render(request, "login.html", context_dict)
 
+@login_required
 def show_letters(request):
 
     '''
@@ -30,7 +35,7 @@ def show_letters(request):
     context_dict = {"letters": create_alphabet(), "syl_piece": create_syllables()}
     return render(request, 'show_letters.html', context_dict)
 
-
+@login_required
 def generate_pdf(request):
 
     '''
@@ -156,7 +161,7 @@ def generate_pdf(request):
     response.write(pdf)
     return response
 
-
+@login_required
 def show_lang(request):
     '''
     This actually shows the generated language.

@@ -1,4 +1,5 @@
 # randLang
+<<<<<<< HEAD
 Random Language Generator
 Generates words using user-selected letters and syllable patterns.
 Python on Django
@@ -17,3 +18,6 @@ To install:
 5. Run python populate_words.py
 6. Navigate to localhost:8000/randLang/show_letters
 7. Website should come up.
+=======
+Random language generator
+>>>>>>> 4b554256bde2ade95344dad60215fc84c3229d8f

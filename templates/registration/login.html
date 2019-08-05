@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block warning %}
+{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="d-flex justify-content-center">Let's create a language!</h1>
+    {% block navbar %}
+      <li class="nav-item list-group-item">
+        <a href="signup">Register!</a>
+      </li>
+    {% endblock %}
+    <p>
+        Languages are made of the same basic building blocks. Some letters, arranged in patterns
+      called syllables. In reality, letters are just little squiggles on paper that tell your
+      muscles when to release air and when to restrict it.
+    </p>
+    <p>
+        So what you're going to do, now, is choose the letters you want. Then you get to pick the
+      syllables. randLang will take care of the rest.
+    </p>
+    <p>
+        But first, you need to login. Don't have an account? That's ok, you can register!
+    </p>
+  </div>
+</div>
+{% if form.errors %}
+  <div class="alert alert-danger alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Danger!</strong> Your username and password didn't match. Please try again.
+  </div>
+{% endif %}
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <p>Please login to see this page.</p>
+  {% endif %}
+{% endif %}
+<div id="content-container" class="container p-none">
+        <div class="lgn-container col-lg-10">
+            <form id="login-form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <table class="table">
+                    <tr>
+                        <td><label for="id_username">Username</label></td>
+                        <td><input id="id_username" name="username"
+                                   type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="id_password">Password</label></td>
+                        <td><input id="id_password" name="password"
+                                   type="password" class="form-control"></td>
+                    </tr>
+                </table>
+                {% if form.errors %}
+                    <p class=" label label-danger">
+                        Your username and password didn't match.
+                        Please try again.
+                    </p>
+                {% endif %}
+
+                <input type="submit" value="Login"
+                       class="btn btn-primary pull-right" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+{% endblock %}
