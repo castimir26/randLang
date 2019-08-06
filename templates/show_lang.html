@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block warning %}
+{% if warning %}
   <div class="alert alert-danger alert-dismissible fade show">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Danger!</strong> {{warning}}
   </div>
+{% endif %}
 {% endblock %}
 {% block navbar %}
 <li class="nav-item list-group-item">

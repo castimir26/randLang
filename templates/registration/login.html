@@ -1,15 +1,23 @@
 {% extends "base.html" %}
 {% block warning %}
 {% endblock %}
+{% block navbar %}
+<ul class="navbar-nav">
+    <ul class="list-group list-group-horizontal">
+      <li class="nav-item list-group-item">
+        <a href="signup">Register</a>
+      </li>
+      <li class="nav-item list-group-item">
+        <p>Login</p>
+      </li>
+    </ul>
+</ul>
+{% endblock %}
+<br />
 {% block body %}
 <div class="jumbotron">
   <div class="container">
     <h1 class="d-flex justify-content-center">Let's create a language!</h1>
-    {% block navbar %}
-      <li class="nav-item list-group-item">
-        <a href="signup">Register!</a>
-      </li>
-    {% endblock %}
     <p>
         Languages are made of the same basic building blocks. Some letters, arranged in patterns
       called syllables. In reality, letters are just little squiggles on paper that tell your

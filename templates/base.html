@@ -13,15 +13,8 @@
 <body>
   {% block warning %}
   {% endblock %}
-  <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top d-flex justify-content-center">
-  <ul class="navbar-nav">
-      <ul class="list-group list-group-horizontal">
-          {% block navbar %}
-          {% endblock %}
-      </ul>
-  </ul>
-  </nav>
-  
+  {% block navbar %}
+  {% endblock %}
   {% block body %}
   {% endblock %}
 
